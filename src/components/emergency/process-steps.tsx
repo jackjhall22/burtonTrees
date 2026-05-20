@@ -35,9 +35,9 @@ export function ProcessSteps() {
         Emergency Execution Protocol
       </h2>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-[--spacing-gutter]">
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {steps.map((step) => (
-          <div key={step.number} className="flex flex-col gap-[--spacing-stack-sm]">
+          <div key={step.number} className="flex flex-col gap-4">
             <div className="w-full h-48 bg-surface-container rounded-xl overflow-hidden relative shadow-sm">
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img
@@ -49,10 +49,10 @@ export function ProcessSteps() {
                 {step.number}
               </div>
             </div>
-            <h3 className="text-2xl font-semibold text-on-surface mt-2">
+            <h3 className="text-2xl font-semibold text-on-surface mt-1">
               {step.title}
             </h3>
-            <p className="text-base text-on-surface-variant">{step.description}</p>
+            <p className="text-base text-on-surface-variant leading-relaxed">{step.description}</p>
           </div>
         ))}
       </div>

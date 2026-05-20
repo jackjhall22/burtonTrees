@@ -13,22 +13,22 @@ export function SafetyGrid() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-[--spacing-gutter]">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
         {/* Lethal Hazard - Large Card */}
-        <div className="md:col-span-2 bg-surface rounded-xl p-[--spacing-stack-lg] border border-error/30 shadow-sm relative overflow-hidden flex flex-col justify-center">
+        <div className="md:col-span-2 bg-surface rounded-xl p-8 md:p-10 border border-error/30 shadow-sm relative overflow-hidden flex flex-col justify-center">
           <div className="absolute top-0 right-0 p-4 opacity-10">
             <MaterialIcon name="bolt" className="text-[120px] text-error" />
           </div>
-          <div className="inline-flex items-center gap-2 bg-error/10 text-error px-3 py-1 rounded-full w-fit mb-4">
+          <div className="inline-flex items-center gap-2 bg-error/10 text-error px-3 py-1 rounded-full w-fit mb-5">
             <MaterialIcon name="warning" className="text-base" />
             <span className="text-xs font-bold uppercase tracking-wide">
               Lethal Hazard
             </span>
           </div>
-          <h3 className="text-2xl font-semibold text-on-surface mb-2 z-10">
+          <h3 className="text-2xl font-semibold text-on-surface mb-3 z-10">
             Assume All Lines Are Live
           </h3>
-          <p className="text-base text-on-surface-variant z-10 max-w-lg">
+          <p className="text-base text-on-surface-variant z-10 max-w-lg leading-relaxed">
             Never approach downed power lines or trees touching them. Electricity
             can travel through the ground and moisture. Keep a minimum distance
             of 35 feet and call your utility provider immediately.
@@ -36,28 +36,28 @@ export function SafetyGrid() {
         </div>
 
         {/* Widowmakers */}
-        <div className="bg-surface rounded-xl p-[--spacing-stack-lg] border border-outline-variant/50 shadow-sm flex flex-col items-start">
-          <div className="bg-primary-container text-on-primary-container size-12 rounded-full flex items-center justify-center mb-[--spacing-stack-sm]">
+        <div className="bg-surface rounded-xl p-8 border border-outline-variant/50 shadow-sm flex flex-col items-start">
+          <div className="bg-primary-container text-on-primary-container size-12 rounded-full flex items-center justify-center mb-4">
             <MaterialIcon name="nature" />
           </div>
-          <h3 className="text-sm font-semibold text-on-surface mb-2 tracking-wide">
+          <h3 className="text-sm font-semibold text-on-surface mb-3 tracking-wide">
             Beware of &ldquo;Widowmakers&rdquo;
           </h3>
-          <p className="text-base text-on-surface-variant">
+          <p className="text-base text-on-surface-variant leading-relaxed">
             Look up. Broken branches suspended in the canopy can fall at any
             moment with the slightest gust of wind.
           </p>
         </div>
 
         {/* No DIY */}
-        <div className="bg-surface rounded-xl p-[--spacing-stack-lg] border border-outline-variant/50 shadow-sm flex flex-col items-start">
-          <div className="bg-primary-container text-on-primary-container size-12 rounded-full flex items-center justify-center mb-[--spacing-stack-sm]">
+        <div className="bg-surface rounded-xl p-8 border border-outline-variant/50 shadow-sm flex flex-col items-start">
+          <div className="bg-primary-container text-on-primary-container size-12 rounded-full flex items-center justify-center mb-4">
             <MaterialIcon name="home_repair_service" />
           </div>
-          <h3 className="text-sm font-semibold text-on-surface mb-2 tracking-wide">
+          <h3 className="text-sm font-semibold text-on-surface mb-3 tracking-wide">
             Avoid DIY Chainsaw Work
           </h3>
-          <p className="text-base text-on-surface-variant">
+          <p className="text-base text-on-surface-variant leading-relaxed">
             Storm-damaged trees carry immense unpredictable tension and
             compression forces. Cutting them without training is highly
             dangerous.
@@ -65,12 +65,12 @@ export function SafetyGrid() {
         </div>
 
         {/* Insurance Documentation */}
-        <div className="md:col-span-2 bg-surface rounded-xl p-[--spacing-stack-lg] border border-outline-variant/50 shadow-sm flex items-center justify-between gap-[--spacing-gutter]">
+        <div className="md:col-span-2 bg-surface rounded-xl p-8 md:p-10 border border-outline-variant/50 shadow-sm flex items-center justify-between gap-8">
           <div>
-            <h3 className="text-2xl font-semibold text-on-surface mb-2">
+            <h3 className="text-2xl font-semibold text-on-surface mb-3">
               Document for Insurance
             </h3>
-            <p className="text-base text-on-surface-variant">
+            <p className="text-base text-on-surface-variant leading-relaxed">
               Before any cleanup begins (if safe to do so), take wide-angle
               photos of the damage to your property and structures for your
               claims adjuster.

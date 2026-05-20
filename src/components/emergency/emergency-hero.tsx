@@ -25,7 +25,7 @@ export function EmergencyHero() {
           homes, roads, and structures with precision and speed.
         </p>
 
-        <div className="flex flex-col sm:flex-row gap-[--spacing-stack-md] pt-[--spacing-stack-sm]">
+        <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 pt-[--spacing-stack-sm]">
           <Link
             href="tel:18002878664"
             className="bg-error text-on-error px-8 py-4 rounded-lg font-semibold text-sm flex items-center justify-center gap-2 shadow-[0_8px_20px_rgba(186,26,26,0.2)] hover:-translate-y-0.5 transition-transform border-t border-white/20 min-h-12"
@@ -61,18 +61,18 @@ export function EmergencyHero() {
       {/* Right: Dispatch Form */}
       <div
         id="dispatch-form"
-        className="lg:col-span-5 lg:col-start-8 bg-surface border border-outline-variant rounded-xl p-[--spacing-gutter] shadow-[0_12px_40px_rgba(31,93,58,0.08)] relative overflow-hidden"
+        className="lg:col-span-5 lg:col-start-8 bg-surface border border-outline-variant rounded-xl p-8 md:p-10 shadow-[0_12px_40px_rgba(31,93,58,0.08)] relative overflow-hidden"
       >
         <div className="absolute top-0 left-0 w-full h-2 bg-error" />
-        <h2 className="text-2xl font-semibold text-on-surface mb-[--spacing-stack-sm] mt-2">
+        <h2 className="text-2xl font-semibold text-on-surface mb-2 mt-4">
           Request Urgent Dispatch
         </h2>
-        <p className="text-base text-on-surface-variant mb-[--spacing-stack-lg]">
+        <p className="text-base text-on-surface-variant mb-8">
           Fill out this form for priority routing. We will contact you within 15
           minutes.
         </p>
 
-        <form className="flex flex-col gap-[--spacing-stack-md]">
+        <form className="flex flex-col gap-5">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-[--spacing-stack-md]">
             <div className="flex flex-col gap-1">
               <label className="text-xs font-bold text-on-surface tracking-wide">

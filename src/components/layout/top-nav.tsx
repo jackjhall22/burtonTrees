@@ -8,9 +8,9 @@ import { cn } from "@/lib/utils";
 
 const navLinks = [
   { label: "Services", href: "/#services", active: true },
-  { label: "Portfolio", href: "#" },
+  { label: "Portfolio", href: "/#portfolio" },
   { label: "About", href: "#" },
-  { label: "Contact", href: "#" },
+  { label: "Contact", href: "/#estimate" },
 ];
 
 export function TopNav() {
@@ -23,23 +23,23 @@ export function TopNav() {
           <Image
             src="/burtonTree.svg"
             alt="Burton Industry"
-            width={56}
-            height={56}
-            className="h-14 w-auto"
+            width={72}
+            height={72}
+            className="h-[4.5rem] w-auto"
             priority
           />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-[--spacing-gutter]">
+        <nav className="hidden md:flex items-center gap-2">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
               className={cn(
-                "text-sm font-semibold tracking-wide transition-colors duration-200",
+                "text-sm font-semibold tracking-wide transition-colors duration-200 px-4 py-2 rounded-md",
                 link.active
-                  ? "text-primary border-b-2 border-primary pb-1"
-                  : "text-on-surface-variant hover:text-primary"
+                  ? "text-primary border-b-2 border-primary"
+                  : "text-on-surface-variant hover:text-primary hover:bg-surface-container-high/50"
               )}
             >
               {link.label}
