@@ -60,7 +60,7 @@ export function ServicesGrid() {
         </p>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-[--spacing-gutter]">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[--spacing-gutter]">
         {services.map((service) =>
           service.large ? (
             <LargeServiceCard key={service.title} {...service} />
@@ -94,10 +94,10 @@ function LargeServiceCard({
 }) {
   return (
     <div
-      className={`col-span-1 md:col-span-2 bg-surface-container-low rounded-xl border border-outline-variant/30 overflow-hidden shadow-[--shadow-card] group hover:-translate-y-1 transition-transform duration-300 flex flex-col ${reversed ? "md:flex-row-reverse" : "md:flex-row"}`}
+      className={`col-span-1 sm:col-span-2 lg:col-span-2 bg-surface-container-low rounded-xl border border-outline-variant/30 overflow-hidden shadow-[--shadow-card] group hover:-translate-y-1 transition-transform duration-300 flex flex-col ${reversed ? "lg:flex-row-reverse" : "lg:flex-row"}`}
     >
       {image && (
-        <div className="w-full md:w-1/2 h-64 md:h-auto relative">
+        <div className="w-full lg:w-1/2 h-64 lg:h-auto relative">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             alt={title}
@@ -106,7 +106,7 @@ function LargeServiceCard({
           />
         </div>
       )}
-      <div className="p-8 w-full md:w-1/2 flex flex-col justify-center">
+      <div className="p-8 w-full lg:w-1/2 flex flex-col justify-center">
         <div
           className={`size-12 ${iconBg} ${iconColor} rounded-full flex items-center justify-center mb-[--spacing-stack-md]`}
         >
