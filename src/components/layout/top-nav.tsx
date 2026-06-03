@@ -2,103 +2,136 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { useState } from "react";
-import { MaterialIcon } from "./material-icon";
+import { useState, useEffect } from "react";
+import { Menu, X, AlertTriangle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navLinks = [
-  { label: "Services", href: "/#services", active: true },
+  { label: "Services", href: "/#services" },
   { label: "Portfolio", href: "/#portfolio" },
-  { label: "About", href: "#" },
+  { label: "About", href: "/#about" },
   { label: "Contact", href: "/#estimate" },
 ];
 
-export function TopNav() {
+export function TopNav({ topOffset }: { topOffset?: string }) {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    function onScroll() {
+      setScrolled(window.scrollY > 50);
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <header className="bg-surface/90 backdrop-blur-md border-b border-outline-variant/30 shadow-sm fixed top-0 left-0 w-full z-50">
-      <div className="max-w-[1280px] mx-auto px-[--spacing-margin-mobile] md:px-[--spacing-margin-desktop] h-20 flex justify-between items-center">
-        <Link href="/" className="flex items-center shrink-0">
+    <header className={cn("fixed left-0 w-full z-50 flex justify-center px-4 pt-4 pointer-events-none", topOffset || "top-0")}>
+      <nav
+        className={cn(
+          "pointer-events-auto w-full max-w-5xl flex items-center justify-between px-5 py-3 rounded-full border transition-all duration-500",
+          scrolled
+            ? "bg-white/92 backdrop-blur-xl border-black/8 shadow-subtle"
+            : "bg-white/80 backdrop-blur-md border-black/5"
+        )}
+      >
+        <Link href="/" className="flex items-center gap-2 shrink-0">
           <Image
-            src="/burtonTree.svg"
+            src="/images/logo.png"
             alt="Burton Industry"
-            width={72}
-            height={72}
-            className="h-[4.5rem] w-auto"
+            width={458}
+            height={374}
+            className="h-10 w-auto"
             priority
           />
         </Link>
 
-        <nav className="hidden md:flex items-center gap-2">
+        <div className="hidden md:flex items-center gap-1">
           {navLinks.map((link) => (
             <Link
               key={link.label}
               href={link.href}
-              className={cn(
-                "text-sm font-semibold tracking-wide transition-colors duration-200 px-4 py-2 rounded-md",
-                link.active
-                  ? "text-primary border-b-2 border-primary"
-                  : "text-on-surface-variant hover:text-primary hover:bg-surface-container-high/50"
-              )}
+              className="text-sm font-medium text-gray-700 hover:text-gray-950 transition-colors px-4 py-2 rounded-full hover:bg-black/5"
             >
               {link.label}
             </Link>
           ))}
-        </nav>
+        </div>
 
-        <div className="hidden md:flex items-center gap-4">
+        <div className="hidden md:flex items-center gap-3">
           <Link
             href="/emergency"
-            className="bg-safety text-on-safety px-6 py-3 rounded-lg font-semibold text-sm shadow-sm hover:opacity-90 transition-opacity border-t border-white/20 flex items-center gap-2"
+            className="flex items-center gap-2 text-sm font-medium text-red-600 hover:text-red-700 transition-colors px-4 py-2 rounded-full hover:bg-red-50"
           >
-            <MaterialIcon name="warning" className="text-lg" />
-            Emergency Service
+            <AlertTriangle size={15} strokeWidth={2} />
+            <span>Emergency</span>
           </Link>
           <Link
-            href="#estimate"
-            className="bg-primary text-on-primary px-6 py-3 rounded-lg font-semibold text-sm shadow-sm hover:opacity-90 transition-opacity border-t border-white/20"
+            href="/#estimate"
+            className="bg-gray-900 text-white px-5 py-2.5 rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors"
           >
-            Request Estimate
+            Get Estimate
           </Link>
         </div>
 
         <button
-          className="md:hidden p-2 text-on-surface"
+          className="md:hidden p-2 text-gray-800"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label="Toggle menu"
         >
-          <MaterialIcon name={mobileOpen ? "close" : "menu"} className="text-2xl" />
+          {mobileOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
-      </div>
+      </nav>
 
       {mobileOpen && (
-        <div className="md:hidden bg-surface border-t border-outline-variant/30 px-[--spacing-margin-mobile] py-4 flex flex-col gap-4">
-          {navLinks.map((link) => (
+        <div className="pointer-events-auto md:hidden fixed inset-0 top-0 z-40 bg-surface/98 backdrop-blur-xl flex flex-col">
+          <div className="flex items-center justify-between px-6 py-5">
+            <Image
+              src="/images/logo.png"
+              alt="Burton Industry"
+              width={458}
+              height={374}
+              className="h-8 w-auto"
+            />
+            <button
+              onClick={() => setMobileOpen(false)}
+              className="p-2 text-text"
+              aria-label="Close menu"
+            >
+              <X size={22} />
+            </button>
+          </div>
+
+          <div className="flex-1 flex flex-col justify-center px-8 gap-2">
+            {navLinks.map((link) => (
+              <Link
+                key={link.label}
+                href={link.href}
+                className="text-3xl font-display font-light text-text py-3 border-b border-border hover:text-accent transition-colors"
+                onClick={() => setMobileOpen(false)}
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          <div className="px-8 pb-10 flex flex-col gap-3">
             <Link
-              key={link.label}
-              href={link.href}
-              className="text-on-surface font-semibold text-base py-2"
+              href="/emergency"
+              className="flex items-center justify-center gap-2 bg-accent text-on-accent px-6 py-4 rounded-full font-semibold text-sm"
               onClick={() => setMobileOpen(false)}
             >
-              {link.label}
+              <AlertTriangle size={16} />
+              Emergency Service
             </Link>
-          ))}
-          <Link
-            href="/emergency"
-            className="bg-safety text-on-safety px-6 py-3 rounded-lg font-semibold text-sm text-center flex items-center justify-center gap-2"
-            onClick={() => setMobileOpen(false)}
-          >
-            <MaterialIcon name="warning" className="text-lg" />
-            Emergency Service
-          </Link>
-          <Link
-            href="#estimate"
-            className="bg-primary text-on-primary px-6 py-3 rounded-lg font-semibold text-sm text-center"
-            onClick={() => setMobileOpen(false)}
-          >
-            Request Estimate
-          </Link>
+            <Link
+              href="/#estimate"
+              className="bg-text text-surface px-6 py-4 rounded-full font-semibold text-sm text-center"
+              onClick={() => setMobileOpen(false)}
+            >
+              Get Estimate
+            </Link>
+          </div>
         </div>
       )}
     </header>

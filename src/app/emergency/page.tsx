@@ -11,8 +11,8 @@ export default function EmergencyPage() {
   return (
     <>
       <EmergencyBanner />
-      <TopNav />
-      <main className="pt-[116px] w-full max-w-[1280px] mx-auto pb-[--spacing-section]">
+      <TopNav topOffset="top-9" />
+      <main className="pt-36 w-full max-w-[var(--spacing-container)] mx-auto pb-[var(--spacing-section)]">
         <EmergencyHero />
         <SafetyGrid />
         <ProcessSteps />

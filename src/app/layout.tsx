@@ -1,15 +1,28 @@
 import type { Metadata } from "next";
-import { Manrope } from "next/font/google";
+import { Inter, Inter_Tight, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 
-const manrope = Manrope({
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
   display: "swap",
 });
 
+const interTight = Inter_Tight({
+  subsets: ["latin"],
+  variable: "--font-display",
+  display: "swap",
+  weight: ["300", "400", "500", "600", "700"],
+});
+
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  variable: "--font-mono",
+  display: "swap",
+});
+
 export const metadata: Metadata = {
-  title: "Burton Industry LLC - Professional Tree Care Rooted In Integrity",
+  title: "Burton Industry LLC — Professional Tree Care Rooted In Integrity",
   description:
     "ISA-certified arborist services, tree preservation, and storm response across Central Texas.",
 };
@@ -20,13 +33,10 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${manrope.variable} h-full`}>
-      <head>
-        <link
-          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
-          rel="stylesheet"
-        />
-      </head>
+    <html
+      lang="en"
+      className={`${inter.variable} ${interTight.variable} ${jetbrainsMono.variable} h-full`}
+    >
       <body className="min-h-full flex flex-col font-sans">{children}</body>
     </html>
   );

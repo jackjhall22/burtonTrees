@@ -3,6 +3,7 @@ import { BottomNav } from "@/components/layout/bottom-nav";
 import { Footer } from "@/components/layout/footer";
 import { HeroSection } from "@/components/marketing/hero-section";
 import { TrustBanner } from "@/components/marketing/trust-banner";
+import { CertificationsBanner } from "@/components/marketing/certifications-banner";
 import { ServicesGrid } from "@/components/marketing/services-grid";
 import { ArboristVideo } from "@/components/marketing/arborist-video";
 import { PortfolioGallery } from "@/components/marketing/portfolio-gallery";
@@ -12,9 +13,10 @@ export default function HomePage() {
   return (
     <>
       <TopNav />
-      <main className="flex-grow pt-20">
+      <main className="flex-grow">
         <HeroSection />
         <TrustBanner />
+        <CertificationsBanner />
         <ServicesGrid />
         <ArboristVideo />
         <PortfolioGallery />
