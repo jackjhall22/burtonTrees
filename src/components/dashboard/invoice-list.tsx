@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { MaterialIcon } from "@/components/layout/material-icon";
+import { Receipt, ArrowRight } from "lucide-react";
 
 const invoices = [
   {
@@ -18,9 +18,9 @@ const invoices = [
 
 export function InvoiceList() {
   return (
-    <div className="bg-surface rounded-xl border border-outline-variant/30 shadow-sm shadow-[rgba(31,93,58,0.08)] p-6 flex-1">
-      <h3 className="text-lg font-bold text-on-surface mb-4 flex items-center gap-2">
-        <MaterialIcon name="receipt_long" className="text-outline" />
+    <div className="bg-surface-card rounded-xl border border-border p-6 flex-1">
+      <h3 className="text-lg font-display font-medium text-text mb-4 flex items-center gap-2">
+        <Receipt size={18} className="text-text-faint" />
         Recent Invoices
       </h3>
 
@@ -28,17 +28,17 @@ export function InvoiceList() {
         {invoices.map((invoice) => (
           <li
             key={invoice.id}
-            className="flex justify-between items-center pb-3 border-b border-outline-variant/20"
+            className="flex justify-between items-center pb-3 border-b border-border"
           >
             <div>
-              <p className="text-xs font-bold text-on-surface tracking-wide">
+              <p className="text-xs font-mono text-text tracking-wider">
                 {invoice.id}
               </p>
-              <p className="text-xs text-outline">{invoice.date}</p>
+              <p className="text-xs text-text-faint">{invoice.date}</p>
             </div>
             <div className="text-right">
-              <p className="text-base text-on-surface">{invoice.amount}</p>
-              <span className="text-[10px] font-bold text-primary bg-primary-container px-2 py-0.5 rounded">
+              <p className="text-sm text-text">{invoice.amount}</p>
+              <span className="text-[10px] font-mono font-medium text-primary bg-primary/15 px-2 py-0.5 rounded">
                 {invoice.status}
               </span>
             </div>
@@ -48,10 +48,10 @@ export function InvoiceList() {
 
       <Link
         href="#"
-        className="inline-flex items-center gap-1 text-primary text-xs font-bold tracking-wide mt-4 hover:underline"
+        className="inline-flex items-center gap-1 text-accent text-xs font-medium mt-4 hover:underline"
       >
         View all billing history
-        <MaterialIcon name="arrow_forward" className="text-base" />
+        <ArrowRight size={12} />
       </Link>
     </div>
   );

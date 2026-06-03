@@ -1,45 +1,41 @@
+"use client";
+
 import Link from "next/link";
-import { MaterialIcon } from "@/components/layout/material-icon";
+import { Scissors, Skull, HeartPulse, Zap, ArrowRight } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Reveal } from "@/components/ui/reveal";
 
 const services = [
   {
+    num: "001",
     title: "Precision Trimming & Pruning",
     description:
       "Enhance tree health, safety, and aesthetics with structural pruning performed to ISA standards.",
-    icon: "content_cut",
-    iconBg: "bg-primary-container",
-    iconColor: "text-on-primary-container",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCrz3G48FMa95NtLJHzevyerr12JWEIWKhwtPSK8cnjgIYIVVYNbY4dUCV8YvNw_4r1DYHwxAMuLruuWIhTiRPXKPmio-GlUSktd_qld-T2LFKEE7irnxXEWsPCqQUxrog3LbXv5z___CgOrKRMTpNpDp1j9FTS72jmxNJBOTV5L-9jXPhNjzWRhy9nnAIaLFWEc1sgL_ig1lp00P5cK3ftJgbRfNcdMj6EWsOJMpRfqHB8iqxaiCcjC1ASbioWlVMtqWIabgZfZsbO",
-    large: true,
+    icon: Scissors,
+    href: "#",
   },
   {
+    num: "002",
     title: "Safe Removals",
     description:
       "Technical dismantling of dead, diseased, or hazardous trees in tight urban spaces.",
-    icon: "dangerous",
-    iconBg: "bg-error-container",
-    iconColor: "text-on-error-container",
+    icon: Skull,
+    href: "#",
   },
   {
+    num: "003",
     title: "Plant Health Care",
     description:
       "Disease diagnosis, deep root fertilization, and pest management programs.",
-    icon: "health_and_safety",
-    iconBg: "bg-secondary-container",
-    iconColor: "text-on-secondary-container",
+    icon: HeartPulse,
+    href: "#",
   },
   {
+    num: "004",
     title: "Emergency Storm Response",
     description:
       "24/7 rapid response for fallen or hazardous trees threatening structures.",
-    icon: "storm",
-    iconBg: "bg-safety/20",
-    iconColor: "text-safety",
-    image:
-      "https://lh3.googleusercontent.com/aida-public/AB6AXuCTBVa_hIoJP_psZBqMd2GchWJmLzYNV1by_EgoQcMaUd8bSm7U__t2W8gXV1kNgnlZMdYNevmV37o-5gTdJWeNd4gkNaDo6v65mFSWcSv9BskK7TaIEYeN0eCBzd51KvGiNiXeej6KxZbeoHDkXMgsWR5HIllEFDnl-gPPwxuTelvgRloqf_UCLezLlCbdPCryHPiCMlhmgiWtGzNeWu7QWBKR7Dpc506OkHFVixkW2oRJ1YGJnGoMeIMMYaxq2vlddy_14gvr8Vmh",
-    large: true,
-    reversed: true,
+    icon: Zap,
     href: "/emergency",
   },
 ];
@@ -48,121 +44,88 @@ export function ServicesGrid() {
   return (
     <section
       id="services"
-      className="py-[--spacing-section] px-[--spacing-margin-mobile] md:px-[--spacing-margin-desktop] max-w-[1280px] mx-auto"
+      className="py-[var(--spacing-section)] px-[var(--spacing-margin)] max-w-[var(--spacing-container)] mx-auto"
     >
-      <div className="text-center mb-[--spacing-section] max-w-3xl mx-auto">
-        <h2 className="text-3xl font-bold text-on-surface mb-[--spacing-stack-sm] tracking-tight">
-          Expert Arboriculture Services
-        </h2>
-        <p className="text-base text-on-surface-variant">
-          Precision care for every stage of your tree&apos;s lifecycle, from
-          preservation to safe removal.
-        </p>
-      </div>
+      <Reveal>
+        <div className="mb-16 max-w-2xl">
+          <p className="font-mono text-xs uppercase tracking-[0.3em] text-accent mb-4">
+            Our Services
+          </p>
+          <h2 className="font-display text-3xl md:text-4xl lg:text-5xl font-light text-text tracking-tight leading-tight">
+            Expert arboriculture services for every stage of your
+            tree&apos;s lifecycle
+          </h2>
+        </div>
+      </Reveal>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-[--spacing-gutter]">
-        {services.map((service) =>
-          service.large ? (
-            <LargeServiceCard key={service.title} {...service} />
-          ) : (
-            <SmallServiceCard key={service.title} {...service} />
-          )
-        )}
+      <div className="flex flex-col">
+        {services.map((service, i) => {
+          const ServiceIcon = service.icon;
+          const isLinked = Boolean(service.href && service.href !== "#");
+
+          const content = (
+            <>
+              <div className="md:col-span-1 flex items-start">
+                <span className="font-mono text-xs text-text-faint tracking-wider">
+                  {service.num}
+                </span>
+              </div>
+
+              <div className="md:col-span-3 flex items-start gap-3">
+                <ServiceIcon
+                  size={20}
+                  strokeWidth={1.5}
+                  className="text-text-muted mt-0.5 shrink-0"
+                />
+                <h3
+                  className={cn(
+                    "text-xl font-display font-medium text-text transition-colors",
+                    isLinked && "group-hover:text-accent"
+                  )}
+                >
+                  {service.title}
+                </h3>
+              </div>
+
+              <div className="md:col-span-6">
+                <p className="text-sm text-text-muted leading-relaxed">
+                  {service.description}
+                </p>
+              </div>
+
+              <div className="md:col-span-2 flex items-center justify-end">
+                {isLinked && (
+                  <span className="flex items-center gap-2 text-sm font-medium text-text-faint group-hover:text-accent transition-colors">
+                    24/7 Response
+                    <ArrowRight
+                      size={14}
+                      className="group-hover:translate-x-1 transition-transform"
+                    />
+                  </span>
+                )}
+              </div>
+            </>
+          );
+
+          return (
+            <Reveal key={service.num} delay={i * 0.08}>
+              {isLinked ? (
+                <Link
+                  href={service.href}
+                  className="group grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-8 md:py-10 border-t border-border hover:border-border-strong transition-colors cursor-pointer"
+                >
+                  {content}
+                </Link>
+              ) : (
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-8 py-8 md:py-10 border-t border-border">
+                  {content}
+                </div>
+              )}
+            </Reveal>
+          );
+        })}
+        <div className="border-t border-border" />
       </div>
     </section>
-  );
-}
-
-function LargeServiceCard({
-  title,
-  description,
-  icon,
-  iconBg,
-  iconColor,
-  image,
-  reversed,
-  href,
-}: {
-  title: string;
-  description: string;
-  icon: string;
-  iconBg: string;
-  iconColor: string;
-  image?: string;
-  reversed?: boolean;
-  href?: string;
-}) {
-  return (
-    <div
-      className={`col-span-1 sm:col-span-2 lg:col-span-2 bg-surface-container-low rounded-xl border border-outline-variant/30 overflow-hidden shadow-[--shadow-card] group hover:-translate-y-1 transition-transform duration-300 flex flex-col ${reversed ? "lg:flex-row-reverse" : "lg:flex-row"}`}
-    >
-      {image && (
-        <div className="w-full lg:w-1/2 h-64 lg:h-auto relative">
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            alt={title}
-            className="w-full h-full object-cover"
-            src={image}
-          />
-        </div>
-      )}
-      <div className="p-8 w-full lg:w-1/2 flex flex-col justify-center">
-        <div
-          className={`size-12 ${iconBg} ${iconColor} rounded-full flex items-center justify-center mb-[--spacing-stack-md]`}
-        >
-          <MaterialIcon name={icon} />
-        </div>
-        <h3 className="text-2xl font-semibold text-on-surface mb-[--spacing-stack-sm]">
-          {title}
-        </h3>
-        <p className="text-base text-on-surface-variant mb-[--spacing-stack-lg]">
-          {description}
-        </p>
-        <Link
-          href={href || "#"}
-          className="text-primary font-semibold text-sm tracking-wide flex items-center gap-1 group-hover:gap-2 transition-all mt-auto w-fit"
-        >
-          Learn More{" "}
-          <MaterialIcon name="arrow_forward" className="text-sm" />
-        </Link>
-      </div>
-    </div>
-  );
-}
-
-function SmallServiceCard({
-  title,
-  description,
-  icon,
-  iconBg,
-  iconColor,
-}: {
-  title: string;
-  description: string;
-  icon: string;
-  iconBg: string;
-  iconColor: string;
-}) {
-  return (
-    <div className="col-span-1 bg-surface-container-low rounded-xl border border-outline-variant/30 p-8 shadow-[--shadow-card] hover:-translate-y-1 transition-transform duration-300 flex flex-col">
-      <div
-        className={`size-12 ${iconBg} ${iconColor} rounded-full flex items-center justify-center mb-[--spacing-stack-md]`}
-      >
-        <MaterialIcon name={icon} />
-      </div>
-      <h3 className="text-2xl font-semibold text-on-surface mb-[--spacing-stack-sm]">
-        {title}
-      </h3>
-      <p className="text-base text-on-surface-variant mb-[--spacing-stack-lg] flex-grow">
-        {description}
-      </p>
-      <Link
-        href="#"
-        className="text-primary font-semibold text-sm tracking-wide flex items-center gap-1 mt-auto w-fit"
-      >
-        Learn More{" "}
-        <MaterialIcon name="arrow_forward" className="text-sm" />
-      </Link>
-    </div>
   );
 }

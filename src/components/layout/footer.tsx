@@ -1,11 +1,10 @@
-import Image from "next/image";
 import Link from "next/link";
-import { MaterialIcon } from "./material-icon";
+import { Phone, Mail, MapPin, ArrowUpRight } from "lucide-react";
 
 const footerLinks = [
   { label: "Services", href: "/#services" },
   { label: "Portfolio", href: "/#portfolio" },
-  { label: "About", href: "#" },
+  { label: "About", href: "/#about" },
   { label: "Contact", href: "/#estimate" },
 ];
 
@@ -18,29 +17,25 @@ const legalLinks = [
 
 export function Footer() {
   return (
-    <footer className="bg-surface-container-highest w-full border-t border-outline-variant pb-28 lg:pb-0">
-      <div className="max-w-[1280px] mx-auto px-6 md:px-12 pt-16 pb-12">
+    <footer className="bg-surface border-t border-border w-full pb-28 lg:pb-0">
+      <div className="max-w-[var(--spacing-container)] mx-auto px-[var(--spacing-margin)] pt-20 pb-12">
         <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8">
           <div className="md:col-span-4 flex flex-col gap-5">
-            <Image
-              src="/burtonTree.svg"
-              alt="Burton Industry"
-              width={56}
-              height={56}
-              className="h-14 w-auto"
-            />
-            <p className="text-sm text-on-surface-variant leading-relaxed max-w-xs">
-              Professional tree care rooted in integrity and safety. ISA-certified
-              arborist services across Central Texas.
+            <h3 className="font-display text-lg font-medium text-text tracking-tight">
+              Burton Industry LLC
+            </h3>
+            <p className="text-sm text-text-muted leading-relaxed max-w-xs">
+              Professional tree care rooted in integrity and safety.
+              ISA-certified arborist services across Central Texas.
             </p>
-            <div className="flex items-center gap-2 text-sm text-on-surface-variant">
-              <MaterialIcon name="location_on" className="text-primary text-base" />
+            <div className="flex items-center gap-2 text-sm text-text-muted">
+              <MapPin size={14} className="text-primary" />
               Central Texas Region
             </div>
           </div>
 
           <div className="md:col-span-2 flex flex-col gap-4">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-on-surface">
+            <h4 className="text-xs font-mono font-medium uppercase tracking-widest text-text-faint">
               Company
             </h4>
             <nav className="flex flex-col gap-3">
@@ -48,16 +43,20 @@ export function Footer() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-sm text-on-surface-variant hover:text-primary transition-colors"
+                  className="text-sm text-text-muted hover:text-text transition-colors flex items-center gap-1 group"
                 >
                   {link.label}
+                  <ArrowUpRight
+                    size={12}
+                    className="opacity-0 group-hover:opacity-100 transition-opacity"
+                  />
                 </Link>
               ))}
             </nav>
           </div>
 
           <div className="md:col-span-2 flex flex-col gap-4">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-on-surface">
+            <h4 className="text-xs font-mono font-medium uppercase tracking-widest text-text-faint">
               Legal
             </h4>
             <nav className="flex flex-col gap-3">
@@ -65,7 +64,7 @@ export function Footer() {
                 <Link
                   key={link.label}
                   href={link.href}
-                  className="text-sm text-on-surface-variant hover:text-primary transition-colors"
+                  className="text-sm text-text-muted hover:text-text transition-colors"
                 >
                   {link.label}
                 </Link>
@@ -74,38 +73,40 @@ export function Footer() {
           </div>
 
           <div className="md:col-span-4 flex flex-col gap-4">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-on-surface">
+            <h4 className="text-xs font-mono font-medium uppercase tracking-widest text-text-faint">
               Get in Touch
             </h4>
             <div className="flex flex-col gap-3">
               <Link
                 href="tel:18002878664"
-                className="flex items-center gap-3 text-sm text-on-surface-variant hover:text-primary transition-colors"
+                className="flex items-center gap-3 text-sm text-text-muted hover:text-text transition-colors"
               >
-                <MaterialIcon name="call" className="text-primary text-base" />
+                <Phone size={14} className="text-primary" />
                 1-800-BURTON-TREES
               </Link>
               <Link
                 href="mailto:info@burtonindustry.com"
-                className="flex items-center gap-3 text-sm text-on-surface-variant hover:text-primary transition-colors"
+                className="flex items-center gap-3 text-sm text-text-muted hover:text-text transition-colors"
               >
-                <MaterialIcon name="mail" className="text-primary text-base" />
+                <Mail size={14} className="text-primary" />
                 info@burtonindustry.com
               </Link>
             </div>
             <Link
               href="/#estimate"
-              className="mt-2 bg-primary text-on-primary px-5 py-3 rounded-lg font-semibold text-sm text-center hover:opacity-90 transition-opacity border-t border-white/20 w-fit"
+              className="mt-2 bg-text text-surface px-5 py-3 rounded-full font-semibold text-sm text-center hover:bg-text/90 transition-colors w-fit"
             >
               Request Estimate
             </Link>
           </div>
         </div>
 
-        <div className="mt-12 pt-8 border-t border-outline-variant/30 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-on-surface-variant">
-          <span>&copy; {new Date().getFullYear()} Burton Industry LLC. All rights reserved.</span>
-          <span className="flex items-center gap-1.5">
-            <MaterialIcon name="verified" className="text-primary text-sm" />
+        <div className="mt-16 pt-8 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-text-faint">
+          <span>
+            &copy; {new Date().getFullYear()} Burton Industry LLC. All rights
+            reserved.
+          </span>
+          <span className="font-mono uppercase tracking-widest">
             ISA Certified Arborists
           </span>
         </div>

@@ -10,13 +10,13 @@ export default function DashboardPage() {
   return (
     <>
       <SideNav variant="customer" />
-      <main className="flex-1 lg:ml-64 p-[--spacing-margin-mobile] lg:p-[--spacing-margin-desktop] pb-32 lg:pb-[--spacing-margin-desktop] bg-surface-container-lowest min-h-screen">
+      <main className="flex-1 lg:ml-64 p-[var(--spacing-margin)] pb-32 lg:pb-[var(--spacing-margin)] bg-surface min-h-screen">
         <DashboardHeader />
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-[--spacing-gutter]">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-[var(--spacing-gutter)]">
           <div className="lg:col-span-8">
             <JobStatusCard />
           </div>
-          <div className="lg:col-span-4 flex flex-col gap-[--spacing-gutter]">
+          <div className="lg:col-span-4 flex flex-col gap-[var(--spacing-gutter)]">
             <ActionCard />
             <InvoiceList />
           </div>
