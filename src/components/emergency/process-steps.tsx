@@ -14,7 +14,7 @@ const steps = [
     title: "Technical Rigging",
     description:
       "Using advanced cranes and rigging techniques, we carefully lift and remove timber off structures, preventing further secondary damage to your property.",
-    image: "/images/crane-rigging.jpg",
+    image: "/images/rigging-climber.jpg",
   },
   {
     number: "003",
